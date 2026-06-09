@@ -3,463 +3,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Keerthana Balasubramani — QA Engineer</title>
+<title>Keerthana B — QA Automation Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-  :root {
-    --bg: #0f1117;
-    --bg2: #181c27;
-    --bg3: #1e2333;
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(255,255,255,0.16);
-    --text: #e8eaf0;
-    --muted: #8892a4;
-    --accent: #00d97e;
-    --accent-dim: rgba(0, 217, 126, 0.12);
-    --accent-dim2: rgba(0, 217, 126, 0.06);
-    --red: #ff4d4d;
-    --amber: #f5a623;
-    --blue: #4d9fff;
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Inter', sans-serif;
-  }
+:root{
+  --bg:#09090f;
+  --bg2:#111118;
+  --bg3:#17171f;
+  --bg4:#1c1c26;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --text:#eeeef5;
+  --muted:#7b7d8e;
+  --muted2:#55566a;
+  --violet:#a78bfa;
+  --violet-dim:rgba(167,139,250,0.12);
+  --violet-dim2:rgba(167,139,250,0.06);
+  --violet-glow:rgba(167,139,250,0.25);
+  --teal:#2dd4bf;
+  --teal-dim:rgba(45,212,191,0.1);
+  --rose:#fb7185;
+  --rose-dim:rgba(251,113,133,0.1);
+  --amber:#fbbf24;
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Inter',sans-serif;
+  --display:'Syne',sans-serif;
+}
 
-  html { scroll-behavior: smooth; }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--violet);text-decoration:none}
+a:hover{text-decoration:underline}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(9,9,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-family:var(--display);font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.01em;display:flex;align-items:center;gap:8px}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--violet);display:inline-block}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);transition:color 0.2s;font-family:var(--mono)}
+.nav-links a:hover{color:var(--text);text-decoration:none}
+.nav-cta{font-size:12px;padding:7px 16px;border:1px solid var(--border2);border-radius:6px;color:var(--text);transition:all 0.2s;font-family:var(--mono)}
+.nav-cta:hover{border-color:var(--violet);color:var(--violet);text-decoration:none}
 
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+/* ── LAYOUT ── */
+.container{max-width:900px;margin:0 auto;padding:0 2rem}
+section{padding:90px 0;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:none}
+.sec-label{font-family:var(--mono);font-size:11px;color:var(--violet);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px}
+h2{font-family:var(--display);font-size:32px;font-weight:700;color:var(--text);margin-bottom:44px;line-height:1.2;letter-spacing:-0.02em}
+h3{font-family:var(--display);font-size:17px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-0.01em}
 
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(15,17,23,0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
-  }
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 14px;
-    color: var(--accent);
-    letter-spacing: 0.02em;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text); text-decoration: none; }
+/* ── HERO ── */
+#hero{padding:110px 0 90px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--violet);background:var(--violet-dim);border:1px solid rgba(167,139,250,0.25);padding:5px 14px;border-radius:20px;margin-bottom:24px}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--violet);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-name{font-family:var(--display);font-size:clamp(42px,7vw,72px);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:8px;color:var(--text)}
+.hero-name span{color:var(--violet)}
+.hero-role{font-family:var(--display);font-size:clamp(16px,2.5vw,22px);font-weight:400;color:var(--muted);margin-bottom:28px;letter-spacing:-0.01em}
+.hero-bio{max-width:580px;color:var(--muted);font-size:15px;line-height:1.85;margin-bottom:40px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;text-decoration:none;font-family:var(--mono)}
+.btn-primary{background:var(--violet);color:#09090f;border:1px solid var(--violet)}
+.btn-primary:hover{background:#c4b5fd;text-decoration:none}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-ghost:hover{border-color:var(--violet);color:var(--violet);text-decoration:none}
 
-  /* LAYOUT */
-  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.stat-cell{background:var(--bg2);padding:20px 24px}
+.stat-num{font-family:var(--display);font-size:30px;font-weight:700;color:var(--violet);line-height:1;margin-bottom:4px}
+.stat-label{font-size:12px;color:var(--muted);font-family:var(--mono)}
 
-  section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-  section:last-of-type { border-bottom: none; }
+/* ── ABOUT STRIP ── */
+.about-strip{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.about-text{font-size:15px;color:var(--muted);line-height:1.85}
+.about-text p+p{margin-top:14px}
+.info-list{display:flex;flex-direction:column;gap:10px}
+.info-row{display:flex;align-items:center;gap:10px;font-size:13px}
+.info-key{color:var(--muted2);font-family:var(--mono);font-size:11px;min-width:80px;text-transform:uppercase;letter-spacing:0.06em}
+.info-val{color:var(--text)}
+.info-val a{color:var(--violet)}
 
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
+/* ── SKILLS ── */
+.skills-wrap{display:flex;flex-direction:column;gap:20px}
+.skill-row{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;padding:18px 0;border-bottom:1px solid var(--border)}
+.skill-row:last-child{border-bottom:none}
+.skill-cat{font-family:var(--mono);font-size:11px;color:var(--muted2);text-transform:uppercase;letter-spacing:0.1em;padding-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{font-family:var(--mono);font-size:12px;padding:4px 11px;border-radius:5px;border:1px solid var(--border2);color:var(--muted);background:var(--bg3);transition:all 0.2s}
+.tag:hover{border-color:var(--violet);color:var(--violet)}
+.tag-v{border-color:rgba(167,139,250,0.3);color:var(--violet);background:var(--violet-dim2)}
+.tag-t{border-color:rgba(45,212,191,0.25);color:var(--teal);background:var(--teal-dim)}
 
-  h2 {
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 40px;
-    line-height: 1.3;
-  }
+/* ── EXPERIENCE ── */
+.exp-timeline{position:relative;padding-left:28px}
+.exp-timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border2)}
+.exp-item{position:relative;margin-bottom:44px}
+.exp-item:last-child{margin-bottom:0}
+.exp-dot{position:absolute;left:-33px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--violet)}
+.exp-dot.current{background:var(--violet)}
+.exp-meta{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.exp-company{font-family:var(--display);font-size:16px;font-weight:600;color:var(--text)}
+.exp-badge{font-family:var(--mono);font-size:10px;padding:2px 9px;border-radius:4px;letter-spacing:0.06em}
+.badge-current{background:var(--violet-dim);color:var(--violet);border:1px solid rgba(167,139,250,0.3)}
+.badge-past{background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.exp-role{font-size:13px;color:var(--violet);font-family:var(--mono);margin-bottom:4px}
+.exp-date{font-size:12px;color:var(--muted2);font-family:var(--mono);margin-bottom:12px}
+.exp-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:12px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:7px}
+.exp-bullets li{font-size:13px;color:var(--muted);padding-left:18px;position:relative;line-height:1.65}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--violet);font-size:12px}
 
-  h3 {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
+/* ── PROJECTS ── */
+.proj-grid{display:flex;flex-direction:column;gap:16px}
+.proj-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;transition:border-color 0.25s,background 0.25s;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start}
+.proj-card:hover{border-color:rgba(167,139,250,0.35);background:var(--bg3)}
+.proj-type{font-family:var(--mono);font-size:11px;color:var(--muted2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
+.proj-desc{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.7}
+.proj-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.proj-tag{font-size:11px;font-family:var(--mono);padding:3px 9px;border-radius:4px;background:var(--violet-dim);color:var(--violet);border:1px solid rgba(167,139,250,0.2)}
+.proj-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-family:var(--mono);color:var(--violet);padding:7px 14px;border:1px solid rgba(167,139,250,0.25);border-radius:7px;white-space:nowrap;transition:all 0.2s}
+.proj-link:hover{background:var(--violet-dim);text-decoration:none}
 
-  /* HERO */
-  #hero {
-    padding: 100px 0 80px;
-    border-bottom: 1px solid var(--border);
-  }
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-  .hero-name {
-    font-size: clamp(36px, 6vw, 60px);
-    font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: 12px;
-    color: var(--text);
-  }
-  .hero-title {
-    font-size: clamp(18px, 3vw, 24px);
-    font-weight: 400;
-    color: var(--muted);
-    margin-bottom: 24px;
-  }
-  .hero-bio {
-    max-width: 560px;
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 36px;
-  }
-  .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #0f1117;
-    border: 1px solid var(--accent);
-  }
-  .btn-primary:hover { background: #00f090; text-decoration: none; }
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border-hover);
-  }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+/* ── BUG REPORTS ── */
+.bug-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.bug-header{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bug-id{font-family:var(--mono);font-size:11px;color:var(--muted2);min-width:60px}
+.bug-title-text{font-size:14px;font-weight:500;flex:1;color:var(--text);font-family:var(--display)}
+.sev{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:4px;font-weight:500;letter-spacing:0.06em}
+.sev-critical{background:rgba(251,113,133,0.12);color:var(--rose);border:1px solid rgba(251,113,133,0.3)}
+.sev-high{background:rgba(251,191,36,0.1);color:var(--amber);border:1px solid rgba(251,191,36,0.3)}
+.sev-medium{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(45,212,191,0.3)}
+.bug-body{padding:22px}
+.bug-field{margin-bottom:16px}
+.bug-field:last-child{margin-bottom:0}
+.bug-field-label{font-family:var(--mono);font-size:10px;color:var(--violet);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px}
+.bug-field-val{font-size:13px;color:var(--muted);line-height:1.65}
+.bug-steps{list-style:none;counter-reset:s}
+.bug-steps li{counter-increment:s;font-size:13px;color:var(--muted);padding:4px 0 4px 26px;position:relative;line-height:1.6}
+.bug-steps li::before{content:counter(s);position:absolute;left:0;font-family:var(--mono);font-size:10px;color:var(--violet);background:var(--violet-dim);width:17px;height:17px;border-radius:3px;display:flex;align-items:center;justify-content:center;top:6px}
+.diff-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.diff-box{padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.65}
+.diff-ex{background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.2);color:#5eead4}
+.diff-ac{background:rgba(251,113,133,0.06);border:1px solid rgba(251,113,133,0.2);color:#fda4af}
+.diff-lbl{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;opacity:0.65}
 
-  /* STATS ROW */
-  .stats-row {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    margin-top: 48px;
-    padding-top: 40px;
-    border-top: 1px solid var(--border);
-  }
-  .stat-item { display: flex; flex-direction: column; gap: 2px; }
-  .stat-num {
-    font-family: var(--mono);
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--accent);
-  }
-  .stat-label { font-size: 12px; color: var(--muted); }
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.edu-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px;transition:border-color 0.2s}
+.edu-card:hover{border-color:var(--border2)}
+.edu-degree{font-family:var(--display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.edu-college{font-size:13px;color:var(--violet);font-family:var(--mono);margin-bottom:8px}
+.edu-meta{display:flex;gap:12px;flex-wrap:wrap}
+.edu-chip{font-size:11px;font-family:var(--mono);padding:3px 9px;border-radius:4px;background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.edu-chip.cgpa{color:var(--teal);background:var(--teal-dim);border-color:rgba(45,212,191,0.25)}
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-  }
-  .skill-group {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    transition: border-color 0.2s;
-  }
-  .skill-group:hover { border-color: var(--border-hover); }
-  .skill-group-title {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .skill-tag {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-family: var(--mono);
-  }
+/* ── CERTIFICATIONS ── */
+.cert-list{display:flex;flex-direction:column;gap:12px}
+.cert-item{display:flex;align-items:center;gap:14px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;transition:border-color 0.2s}
+.cert-item:hover{border-color:var(--border2)}
+.cert-icon{width:36px;height:36px;border-radius:8px;background:var(--violet-dim);display:flex;align-items:center;justify-content:center;color:var(--violet);font-family:var(--mono);font-size:13px;font-weight:500;flex-shrink:0}
+.cert-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px}
+.cert-by{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.cert-year{font-family:var(--mono);font-size:11px;color:var(--muted2);margin-left:auto}
 
-  /* PROJECTS */
-  .projects-list { display: flex; flex-direction: column; gap: 16px; }
-  .project-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 24px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 16px;
-    align-items: start;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .project-card:hover { border-color: var(--accent); background: var(--accent-dim2); }
-  .project-type {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .project-desc {
-    font-size: 14px;
-    color: var(--muted);
-    margin-top: 8px;
-    line-height: 1.6;
-  }
-  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
-  .project-tag {
-    font-size: 11px;
-    font-family: var(--mono);
-    padding: 3px 8px;
-    border-radius: 4px;
-    background: var(--accent-dim);
-    color: var(--accent);
-  }
-  .project-link {
-    font-size: 12px;
-    color: var(--accent);
-    white-space: nowrap;
-    padding: 6px 12px;
-    border: 1px solid var(--accent-dim);
-    border-radius: 5px;
-    transition: background 0.2s;
-  }
-  .project-link:hover { background: var(--accent-dim); text-decoration: none; }
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px}
+.contact-card{display:flex;align-items:center;gap:14px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px 20px;color:var(--text);transition:all 0.2s;text-decoration:none}
+.contact-card:hover{border-color:var(--violet);color:var(--violet);text-decoration:none}
+.contact-icon-wrap{width:38px;height:38px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:background 0.2s}
+.contact-card:hover .contact-icon-wrap{background:var(--violet-dim)}
+.contact-label{font-size:13px;font-weight:500;margin-bottom:1px}
+.contact-val{font-size:11px;color:var(--muted);font-family:var(--mono)}
 
-  /* BUG REPORT */
-  .bug-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .bug-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .bug-id {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .bug-title-text { font-size: 15px; font-weight: 500; flex: 1; margin: 0 16px; }
-  .severity {
-    font-size: 11px;
-    font-family: var(--mono);
-    padding: 3px 10px;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-  .sev-critical { background: rgba(255,77,77,0.15); color: var(--red); border: 1px solid rgba(255,77,77,0.3); }
-  .sev-high { background: rgba(245,166,35,0.15); color: var(--amber); border: 1px solid rgba(245,166,35,0.3); }
-  .sev-medium { background: rgba(77,159,255,0.15); color: var(--blue); border: 1px solid rgba(77,159,255,0.3); }
-  .bug-body { padding: 20px; }
-  .bug-field { margin-bottom: 14px; }
-  .bug-field-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 4px;
-  }
-  .bug-field-val { font-size: 13px; color: var(--muted); line-height: 1.6; }
-  .bug-steps { list-style: none; counter-reset: steps; }
-  .bug-steps li {
-    counter-increment: steps;
-    font-size: 13px;
-    color: var(--muted);
-    padding: 4px 0 4px 28px;
-    position: relative;
-    line-height: 1.6;
-  }
-  .bug-steps li::before {
-    content: counter(steps);
-    position: absolute;
-    left: 0;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    background: var(--accent-dim);
-    width: 18px;
-    height: 18px;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 6px;
-  }
-  .diff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
-  .diff-box { padding: 10px 14px; border-radius: 6px; font-size: 13px; line-height: 1.6; }
-  .diff-expected { background: rgba(0,217,126,0.08); border: 1px solid rgba(0,217,126,0.2); color: #6edfa8; }
-  .diff-actual { background: rgba(255,77,77,0.08); border: 1px solid rgba(255,77,77,0.2); color: #ff8080; }
-  .diff-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; opacity: 0.7; }
+/* ── FOOTER ── */
+footer{padding:28px 2rem;border-top:1px solid var(--border);text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted2)}
+footer span{color:var(--violet)}
 
-  /* EXPERIENCE */
-  .exp-list { display: flex; flex-direction: column; gap: 0; }
-  .exp-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 24px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .exp-item:last-child { border-bottom: none; }
-  .exp-date { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 3px; }
-  .exp-company { font-size: 13px; color: var(--accent); margin-top: 2px; }
-  .exp-desc { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.7; }
-  .exp-highlights { margin-top: 10px; list-style: none; }
-  .exp-highlights li {
-    font-size: 13px;
-    color: var(--muted);
-    padding: 3px 0 3px 16px;
-    position: relative;
-    line-height: 1.6;
-  }
-  .exp-highlights li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 12px;
-  }
-
-  /* CONTACT */
-  #contact { padding-bottom: 100px; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 480px; }
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-size: 14px;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-  .contact-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-  .contact-icon { font-size: 18px; }
-
-  /* FOOTER */
-  footer {
-    padding: 24px 2rem;
-    border-top: 1px solid var(--border);
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 600px) {
-    nav { padding: 0 1rem; }
-    .nav-links { display: none; }
-    .container { padding: 0 1.25rem; }
-    section { padding: 60px 0; }
-    .exp-item { grid-template-columns: 1fr; gap: 4px; }
-    .diff-row { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .project-card { grid-template-columns: 1fr; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  nav{padding:0 1rem}
+  .nav-links,.nav-cta{display:none}
+  .container{padding:0 1.25rem}
+  section{padding:64px 0}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .about-strip{grid-template-columns:1fr}
+  .skill-row{grid-template-columns:1fr;gap:10px}
+  .proj-card{grid-template-columns:1fr}
+  .diff-row{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <span class="nav-logo">// keerthanaB.github.io</span>
+  <div class="nav-logo"><span class="nav-logo-dot"></span>Keerthana B</div>
   <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#bugs">Bug reports</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#bugs">bug reports</a></li>
+    <li><a href="#education">education</a></li>
+    <li><a href="#contact">contact</a></li>
   </ul>
+  <a href="mailto:keerthanabala582@gmail.com" class="nav-cta">hire me →</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-glow"></div>
   <div class="container">
-    <div class="hero-eyebrow">QA Engineer</div>
-    <h1 class="hero-name">Keerthana B</h1>
-    <p class="hero-title">Breaking software so users don't have to.</p>
+    <div class="hero-tag"><span class="hero-tag-dot"></span>open to opportunities</div>
+    <h1 class="hero-name">Keerthana <span>B</span></h1>
+    <p class="hero-role">QA Automation Engineer · Software Test Engineer</p>
     <p class="hero-bio">
-      I'm a QA Engineer (Software Test Engineer) with hands-on experience in manual, functional,
-regression, and API testing (Postman). Proficient in Java, SQL, Selenium WebDriver with TestNG, JIRA, Web
-Application Testing and Agile/Scrum.
-      I specialise in API testing, regression suites, and building reliable CI pipelines.
-      I care deeply about quality — not just catching bugs, but preventing them.
+      I break software before your users do. With hands-on experience in manual testing, Selenium automation, and API testing, I build reliable test suites that catch bugs early and keep releases confident. Based in Bengaluru — passionate about quality, automation, and Agile teams.
     </p>
-    <div class="hero-links">
-      <a href="#projects" class="btn btn-primary">View my work</a>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">view my work →</a>
       <a href="https://github.com/keerthanadora" class="btn btn-ghost" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/5keerthana2001/" class="btn btn-ghost" target="_blank">LinkedIn</a>
-      <a href="resume.pdf" class="btn btn-ghost" target="_blank">Resume PDF</a>
+      <a href="https://linkedin.com/in/5keerthana2001" class="btn btn-ghost" target="_blank">LinkedIn</a>
+      <a href="Keerthana_Res_Seln2New.pdf" class="btn btn-ghost" target="_blank">resume PDF</a>
     </div>
     <div class="stats-row">
-      <div class="stat-item">
-        <span class="stat-num">1+</span>
-        <span class="stat-label">years in QA</span>
+      <div class="stat-cell">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">test cases designed</div>
       </div>
-      <div class="stat-item">
-        <span class="stat-num">500+</span>
-        <span class="stat-label">bugs reported</span>
+      <div class="stat-cell">
+        <div class="stat-num">25%+</div>
+        <div class="stat-label">defect detection rate</div>
       </div>
-      <div class="stat-item">
-        <span class="stat-num">200+</span>
-        <span class="stat-label">automated tests</span>
+      <div class="stat-cell">
+        <div class="stat-num">2</div>
+        <div class="stat-label">projects tested</div>
       </div>
-      <div class="stat-item">
-        <span class="stat-num">8</span>
-        <span class="stat-label">projects tested</span>
+      <div class="stat-cell">
+        <div class="stat-num">8.04</div>
+        <div class="stat-label">MCA CGPA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sec-label">Who I am</div>
+    <h2>About me</h2>
+    <div class="about-strip">
+      <div class="about-text">
+        <p>I'm a Software QA Automation Engineer with a strong foundation in both manual and automated testing. Trained at QSpiders Bangalore, I specialise in Selenium WebDriver (Java), Postman API testing, and building structured test frameworks using TestNG and the Page Object Model.</p>
+        <p>I care deeply about finding defects before they reach users — not just executing test cases, but thinking critically about edge cases, data flows, and system boundaries. I thrive in Agile/Scrum teams where quality is everyone's responsibility.</p>
+        <p>Currently seeking a full-time QA Engineer role where I can grow my automation skills and contribute to high-quality software delivery.</p>
+      </div>
+      <div class="info-list">
+        <div class="info-row">
+          <span class="info-key">location</span>
+          <span class="info-val">Bengaluru, Karnataka</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">email</span>
+          <span class="info-val"><a href="mailto:keerthanabala582@gmail.com">keerthanabala582@gmail.com</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">phone</span>
+          <span class="info-val">+91 9952890994</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">github</span>
+          <span class="info-val"><a href="https://github.com/keerthanadora" target="_blank">keerthanadora</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">linkedin</span>
+          <span class="info-val"><a href="https://linkedin.com/in/5keerthana2001" target="_blank">5keerthana2001</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">status</span>
+          <span class="info-val" style="color:var(--violet);">● available for hire</span>
+        </div>
       </div>
     </div>
   </div>
@@ -468,47 +300,129 @@ Application Testing and Agile/Scrum.
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <div class="section-label">Expertise</div>
+    <div class="sec-label">Expertise</div>
     <h2>Skills & tools</h2>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-group-title">Testing types</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Functional</span>
-          <span class="skill-tag">Regression</span>
-          <span class="skill-tag">Smoke</span>
-          <span class="skill-tag">API testing</span>
-          <span class="skill-tag">UI testing</span>
-          <span class="skill-tag">Performance</span>
+    <div class="skills-wrap">
+      <div class="skill-row">
+        <span class="skill-cat">Testing</span>
+        <div class="tags">
+          <span class="tag tag-v">Manual Testing</span>
+          <span class="tag tag-v">Functional</span>
+          <span class="tag tag-v">Regression</span>
+          <span class="tag tag-v">Smoke</span>
+          <span class="tag">UI Validation</span>
+          <span class="tag">Cross-browser</span>
+          <span class="tag">Performance</span>
+          <span class="tag">Risk-Based</span>
+          <span class="tag">Test Case Design</span>
+          <span class="tag">Defect Life Cycle</span>
+          <span class="tag">RTM</span>
         </div>
       </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Automation</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Selenium</span>
-          <span class="skill-tag">Postman</span>
-          <span class="skill-tag">RestAssured</span>
+      <div class="skill-row">
+        <span class="skill-cat">Automation</span>
+        <div class="tags">
+          <span class="tag tag-v">Selenium WebDriver</span>
+          <span class="tag tag-v">Java</span>
+          <span class="tag tag-v">TestNG</span>
+          <span class="tag tag-v">POM</span>
+          <span class="tag">Data Driven Testing</span>
+          <span class="tag">Maven</span>
+          <span class="tag">XPath</span>
+          <span class="tag">CSS Selectors</span>
         </div>
       </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Languages</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">JavaScript</span>
-          
-         
+      <div class="skill-row">
+        <span class="skill-cat">API Testing</span>
+        <div class="tags">
+          <span class="tag tag-t">Postman</span>
+          <span class="tag tag-t">REST</span>
+          <span class="tag tag-t">JSON Schema</span>
+          <span class="tag tag-t">HTTP Methods</span>
+          <span class="tag">CRUD Operations</span>
+          <span class="tag">Response Assertions</span>
         </div>
       </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Tools & CI/CD</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Jira</span>
-          <span class="skill-tag">GitHub Actions</span>
-          <span class="skill-tag">Jenkins</span>
-          <span class="skill-tag">Docker</span>
+      <div class="skill-row">
+        <span class="skill-cat">Tools</span>
+        <div class="tags">
+          <span class="tag">JIRA</span>
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">GitLab CI</span>
+          <span class="tag">Jenkins</span>
+          <span class="tag">Visual Studio</span>
         </div>
       </div>
+      <div class="skill-row">
+        <span class="skill-cat">Other</span>
+        <div class="tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Java (OOPs)</span>
+          <span class="tag">Agile / Scrum</span>
+          <span class="tag">SDLC</span>
+          <span class="tag">STLC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-label">Career</div>
+    <h2>Experience</h2>
+    <div class="exp-timeline">
+
+      <!-- CURRENT COMPANY — update this block -->
+      <div class="exp-item">
+        <div class="exp-dot current"></div>
+        <div class="exp-meta">
+          <span class="exp-company">Your Current Company</span>
+          <span class="exp-badge badge-current">current</span>
+        </div>
+        <div class="exp-role">QA Engineer / Your Job Title</div>
+        <div class="exp-date">Month Year — present · Bengaluru</div>
+        <p class="exp-desc">Describe what you do here — what product/app you test, what the team looks like, what your day-to-day involves.</p>
+        <ul class="exp-bullets">
+          <li>Replace this with your real achievement — e.g. "Built Selenium regression suite covering X test cases"</li>
+          <li>Replace this with a second achievement — e.g. "Reduced regression cycle time by X%"</li>
+          <li>Replace this with a third achievement — quantify where possible</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <span class="exp-company">MadProtek Solutions</span>
+          <span class="exp-badge badge-past">internship</span>
+        </div>
+        <div class="exp-role">Full Stack Developer Intern</div>
+        <div class="exp-date">Feb 2024 — May 2024 · Bengaluru</div>
+        <p class="exp-desc">Worked on website development and feature improvement during the full Software Development Life Cycle.</p>
+        <ul class="exp-bullets">
+          <li>Developed and improved website functionality by adding advanced features, resulting in a 25% increase in website traffic</li>
+          <li>Collaborated with the team during SDLC, gaining hands-on experience with real-world development workflows</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <span class="exp-company">QSpiders Bangalore</span>
+          <span class="exp-badge badge-past">training</span>
+        </div>
+        <div class="exp-role">Software Testing Trainee</div>
+        <div class="exp-date">Oct 2025 · Bengaluru</div>
+        <p class="exp-desc">Intensive hands-on training in Software QA/Test Engineering with focus on both manual and automation testing.</p>
+        <ul class="exp-bullets">
+          <li>Trained in Manual Testing fundamentals — test case design, defect life cycle, RTM, STLC</li>
+          <li>Practiced Selenium WebDriver (Java) automation including Page Object Model and TestNG framework</li>
+          <li>Hands-on API testing with Postman — REST, JSON schema validation, HTTP methods</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -516,61 +430,48 @@ Application Testing and Agile/Scrum.
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <div class="section-label">Work</div>
+    <div class="sec-label">Work samples</div>
     <h2>Testing projects</h2>
-    <div class="projects-list">
+    <div class="proj-grid">
 
-      <div class="project-card">
+      <div class="proj-card">
         <div>
-          <div class="project-type">Automation · Web</div>
-          <h3>E-commerce regression suite</h3>
-          <p class="project-desc">
-            Built an end-to-end Playwright test suite for a demo e-commerce app (SauceDemo).
-            Covers login, cart, checkout, and order flows. Integrated with GitHub Actions for CI on every push.
+          <div class="proj-type">End-to-End · Automation · API</div>
+          <h3>E-Commerce Web Application — End-to-End Testing</h3>
+          <p class="proj-desc">
+            Performed comprehensive end-to-end testing for an e-commerce app covering Login, Cart, Checkout, and Search modules. Designed 100+ test cases with proper prioritization, validated REST APIs using Postman, and automated regression tests using Selenium WebDriver in Java.
           </p>
-          <div class="project-tags">
-            <span class="project-tag">Playwright</span>
-            <span class="project-tag">JavaScript</span>
-            <span class="project-tag">GitHub Actions</span>
-            <span class="project-tag">Page Object Model</span>
+          <div class="proj-tags">
+            <span class="proj-tag">Selenium WebDriver</span>
+            <span class="proj-tag">Java</span>
+            <span class="proj-tag">TestNG</span>
+            <span class="proj-tag">Postman</span>
+            <span class="proj-tag">SQL</span>
+            <span class="proj-tag">POM</span>
+            <span class="proj-tag">100+ test cases</span>
+            <span class="proj-tag">25%+ defects found</span>
           </div>
         </div>
-        <a href="https://github.com/yourusername/ecommerce-tests" class="project-link" target="_blank">View repo →</a>
+        <a href="https://github.com/keerthanadora" class="proj-link" target="_blank">View repo →</a>
       </div>
 
-      <div class="project-card">
+      <div class="proj-card">
         <div>
-          <div class="project-type">API Testing</div>
-          <h3>REST API test collection</h3>
-          <p class="project-desc">
-            Comprehensive Postman collection testing the JSONPlaceholder API. Covers CRUD operations,
-            schema validation, status code checks, and negative test cases. Exported and runnable via Newman.
+          <div class="proj-type">Exploratory · Usability · Mobile & Web</div>
+          <h3>Crowd Beta Testing — Platinum RX</h3>
+          <p class="proj-desc">
+            Conducted exploratory, usability, and UI testing for both web and mobile versions of the Platinum RX app. Identified real-world bugs impacting user experience and prepared structured test documentation and technical bug reports.
           </p>
-          <div class="project-tags">
-            <span class="project-tag">Postman</span>
-            <span class="project-tag">Newman</span>
-            <span class="project-tag">REST API</span>
-            <span class="project-tag">JSON Schema</span>
+          <div class="proj-tags">
+            <span class="proj-tag">Exploratory Testing</span>
+            <span class="proj-tag">Usability Testing</span>
+            <span class="proj-tag">UI Testing</span>
+            <span class="proj-tag">Mobile Testing</span>
+            <span class="proj-tag">Bug Reports</span>
+            <span class="proj-tag">Test Documentation</span>
           </div>
         </div>
-        <a href="https://github.com/yourusername/api-tests" class="project-link" target="_blank">View repo →</a>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <div class="project-type">Manual · Exploratory</div>
-          <h3>OpenCart exploratory testing</h3>
-          <p class="project-desc">
-            Exploratory testing session on demo.opencart.com. Documented 12 bugs across the checkout
-            and product search flows. Includes test charter, session notes, and full bug reports.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Exploratory</span>
-            <span class="project-tag">Bug reports</span>
-            <span class="project-tag">Test charter</span>
-          </div>
-        </div>
-        <a href="https://github.com/yourusername/opencart-testing" class="project-link" target="_blank">View repo →</a>
+        <a href="https://github.com/keerthanadora" class="proj-link" target="_blank">View repo →</a>
       </div>
 
     </div>
@@ -580,87 +481,124 @@ Application Testing and Agile/Scrum.
 <!-- BUG REPORTS -->
 <section id="bugs">
   <div class="container">
-    <div class="section-label">Samples</div>
+    <div class="sec-label">Sample artifacts</div>
     <h2>Bug report samples</h2>
 
     <div class="bug-card">
       <div class="bug-header">
-        <span class="bug-id">BUG-042</span>
-        <span class="bug-title-text">Checkout total shows $0.00 when applying coupon code on empty cart</span>
-        <span class="severity sev-critical">Critical</span>
+        <span class="bug-id">BUG-001</span>
+        <span class="bug-title-text">Checkout total shows ₹0 when coupon applied to empty cart</span>
+        <span class="sev sev-critical">Critical</span>
       </div>
       <div class="bug-body">
         <div class="bug-field">
           <div class="bug-field-label">Environment</div>
-          <div class="bug-field-val">demo.opencart.com · Chrome 124 · Windows 11</div>
+          <div class="bug-field-val">E-Commerce App · Chrome 124 · Windows 11 · Test environment</div>
         </div>
         <div class="bug-field">
           <div class="bug-field-label">Steps to reproduce</div>
           <ol class="bug-steps">
-            <li>Open the site and ensure the cart is empty</li>
-            <li>Navigate to the checkout page directly via URL</li>
-            <li>Enter coupon code <code style="font-family:var(--mono);font-size:12px;background:var(--bg3);padding:2px 6px;border-radius:3px;">SAVE10</code> in the coupon field</li>
-            <li>Click "Apply coupon"</li>
-            <li>Observe the order total displayed</li>
+            <li>Log in to the application and ensure the cart is empty</li>
+            <li>Navigate directly to the checkout page via URL</li>
+            <li>Enter a valid coupon code in the discount field and click "Apply"</li>
+            <li>Observe the order total displayed on screen</li>
           </ol>
         </div>
         <div class="bug-field">
           <div class="bug-field-label">Expected vs actual</div>
           <div class="diff-row">
-            <div class="diff-box diff-expected">
-              <div class="diff-label">Expected</div>
-              An error message is shown: "Your cart is empty. Add items before applying a coupon."
+            <div class="diff-box diff-ex">
+              <div class="diff-lbl">Expected</div>
+              Validation error shown: "Cart is empty. Add products before applying a coupon."
             </div>
-            <div class="diff-box diff-actual">
-              <div class="diff-label">Actual</div>
-              Coupon is accepted and order total displays as $0.00, allowing a potentially free order submission.
+            <div class="diff-box diff-ac">
+              <div class="diff-lbl">Actual</div>
+              Coupon applies successfully and order total displays as ₹0, allowing a potentially free order to be placed.
             </div>
           </div>
         </div>
         <div class="bug-field">
           <div class="bug-field-label">Severity / Priority</div>
-          <div class="bug-field-val">Critical / P1 — Business logic failure, potential revenue loss</div>
+          <div class="bug-field-val">Critical / P1 — Business logic failure with potential revenue impact</div>
         </div>
       </div>
     </div>
 
     <div class="bug-card">
       <div class="bug-header">
-        <span class="bug-id">BUG-078</span>
-        <span class="bug-title-text">Search results not filtered when price range slider is used on mobile</span>
-        <span class="severity sev-high">High</span>
+        <span class="bug-id">BUG-002</span>
+        <span class="bug-title-text">Search returns no results for valid product name with trailing space</span>
+        <span class="sev sev-high">High</span>
       </div>
       <div class="bug-body">
         <div class="bug-field">
           <div class="bug-field-label">Environment</div>
-          <div class="bug-field-val">demo.opencart.com · Safari 17 · iPhone 14 (iOS 17.4)</div>
+          <div class="bug-field-val">E-Commerce App · Firefox 125 · Windows 11 · Test environment</div>
         </div>
         <div class="bug-field">
           <div class="bug-field-label">Steps to reproduce</div>
           <ol class="bug-steps">
-            <li>Open the site on a mobile device or Chrome DevTools mobile view</li>
-            <li>Navigate to any product category page</li>
-            <li>Use the price range slider to set a max price of $50</li>
-            <li>Tap outside the slider to apply the filter</li>
-            <li>Observe the product list</li>
+            <li>Navigate to the product search page</li>
+            <li>Type a valid product name followed by a single trailing space (e.g. "Laptop ")</li>
+            <li>Click the Search button or press Enter</li>
+            <li>Observe the search results</li>
           </ol>
         </div>
         <div class="bug-field">
           <div class="bug-field-label">Expected vs actual</div>
           <div class="diff-row">
-            <div class="diff-box diff-expected">
-              <div class="diff-label">Expected</div>
-              Product list filters to show only items priced $50 or below.
+            <div class="diff-box diff-ex">
+              <div class="diff-lbl">Expected</div>
+              Search input is trimmed and results for "Laptop" are displayed correctly.
             </div>
-            <div class="diff-box diff-actual">
-              <div class="diff-label">Actual</div>
-              All products remain visible regardless of the selected price range. Filter has no effect on mobile.
+            <div class="diff-box diff-ac">
+              <div class="diff-lbl">Actual</div>
+              "No results found" message is shown. Application does not trim whitespace before querying.
             </div>
           </div>
         </div>
         <div class="bug-field">
           <div class="bug-field-label">Severity / Priority</div>
-          <div class="bug-field-val">High / P2 — Broken filter on mobile, affects UX significantly</div>
+          <div class="bug-field-val">High / P2 — Poor UX, users unable to find products due to input handling issue</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bug-card">
+      <div class="bug-header">
+        <span class="bug-id">BUG-003</span>
+        <span class="bug-title-text">API returns 200 OK for POST /cart/add with negative item quantity</span>
+        <span class="sev sev-medium">Medium</span>
+      </div>
+      <div class="bug-body">
+        <div class="bug-field">
+          <div class="bug-field-label">Environment</div>
+          <div class="bug-field-val">REST API · Postman v10 · Test environment</div>
+        </div>
+        <div class="bug-field">
+          <div class="bug-field-label">Steps to reproduce</div>
+          <ol class="bug-steps">
+            <li>Open Postman and send a POST request to /cart/add</li>
+            <li>Set request body: <code style="font-family:var(--mono);font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:3px;">{"productId": 12, "quantity": -3}</code></li>
+            <li>Observe the HTTP response status and body</li>
+          </ol>
+        </div>
+        <div class="bug-field">
+          <div class="bug-field-label">Expected vs actual</div>
+          <div class="diff-row">
+            <div class="diff-box diff-ex">
+              <div class="diff-lbl">Expected</div>
+              400 Bad Request with error message: "Quantity must be a positive integer."
+            </div>
+            <div class="diff-box diff-ac">
+              <div class="diff-lbl">Actual</div>
+              200 OK returned. Item added to cart with quantity -3, corrupting the cart total calculation.
+            </div>
+          </div>
+        </div>
+        <div class="bug-field">
+          <div class="bug-field-label">Severity / Priority</div>
+          <div class="bug-field-val">Medium / P2 — API input validation missing, data integrity risk</div>
         </div>
       </div>
     </div>
@@ -668,48 +606,58 @@ Application Testing and Agile/Scrum.
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
+<!-- EDUCATION -->
+<section id="education">
   <div class="container">
-    <div class="section-label">Background</div>
-    <h2>Experience</h2>
-    <div class="exp-list">
-
-      <div class="exp-item">
-        <div>
-          <div class="exp-date">2022 — present</div>
-          <div class="exp-company">Company Name</div>
-        </div>
-        <div>
-          <h3>QA Engineer</h3>
-          <p class="exp-desc">
-            Describe your role in 1–2 sentences. What product did you test? What was the team size?
-          </p>
-          <ul class="exp-highlights">
-            <li>Built Selenium regression suite covering 150+ test cases, reducing manual regression time by 60%</li>
-            <li>Led API testing for 3 major feature releases using Postman and Newman</li>
-            <li>Set up GitHub Actions CI pipeline triggering smoke tests on every pull request</li>
-          </ul>
+    <div class="sec-label">Academic background</div>
+    <h2>Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Master of Computer Applications (MCA)</div>
+        <div class="edu-college">Adhiyamaan College of Engineering (Autonomous)</div>
+        <div class="edu-meta">
+          <span class="edu-chip">2022 – 2024</span>
+          <span class="edu-chip cgpa">CGPA 8.04</span>
         </div>
       </div>
-
-      <div class="exp-item">
-        <div>
-          <div class="exp-date">2020 — 2022</div>
-          <div class="exp-company">Previous Company</div>
-        </div>
-        <div>
-          <h3>Junior QA Analyst</h3>
-          <p class="exp-desc">
-            Describe your earlier role here.
-          </p>
-          <ul class="exp-highlights">
-            <li>Executed manual test cases for web and mobile applications</li>
-            <li>Reported and tracked 200+ bugs in Jira across 4 product sprints</li>
-          </ul>
+      <div class="edu-card">
+        <div class="edu-degree">B.Sc. Computer Science</div>
+        <div class="edu-college">St. Joseph's College of Arts and Science for Women</div>
+        <div class="edu-meta">
+          <span class="edu-chip">2019 – 2022</span>
+          <span class="edu-chip cgpa">CGPA 8.21</span>
         </div>
       </div>
+    </div>
 
+    <div style="margin-top:32px">
+      <div class="sec-label" style="margin-bottom:16px">Certifications</div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <div class="cert-icon">QA</div>
+          <div>
+            <div class="cert-name">Software Testing Trainee Program</div>
+            <div class="cert-by">QSpiders, Bangalore · Manual Testing & Selenium WebDriver (Java)</div>
+          </div>
+          <span class="cert-year">Oct 2025</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">Jv</div>
+          <div>
+            <div class="cert-name">Java Programming Certification</div>
+            <div class="cert-by">Talent Battle</div>
+          </div>
+          <span class="cert-year">2024</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">Jv</div>
+          <div>
+            <div class="cert-name">Java Bootcamp Certification</div>
+            <div class="cert-by">Talent Battle</div>
+          </div>
+          <span class="cert-year">2024</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -717,34 +665,49 @@ Application Testing and Agile/Scrum.
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div class="section-label">Get in touch</div>
+    <div class="sec-label">Get in touch</div>
     <h2>Contact</h2>
-    <p style="color:var(--muted); margin-bottom: 28px; max-width: 400px;">
-      Open to new opportunities. Feel free to reach out via email or connect on LinkedIn.
+    <p style="color:var(--muted);margin-bottom:32px;max-width:460px;font-size:15px;line-height:1.8">
+      I'm actively looking for QA Engineer opportunities in Bengaluru. Feel free to reach out — I respond within a day.
     </p>
     <div class="contact-grid">
-      <a href="mailto:your@email.com" class="contact-link">
-        <span class="contact-icon">✉</span>
-        <span>your@email.com</span>
+      <a href="mailto:keerthanabala582@gmail.com" class="contact-card">
+        <div class="contact-icon-wrap">✉</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val">keerthanabala582@gmail.com</div>
+        </div>
       </a>
-      <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">
-        <span class="contact-icon">in</span>
-        <span>LinkedIn</span>
+      <a href="https://linkedin.com/in/5keerthana2001" class="contact-card" target="_blank">
+        <div class="contact-icon-wrap">in</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-val">5keerthana2001</div>
+        </div>
       </a>
-      <a href="https://github.com/yourusername" class="contact-link" target="_blank">
-        <span class="contact-icon">⌥</span>
-        <span>GitHub</span>
+      <a href="https://github.com/keerthanadora" class="contact-card" target="_blank">
+        <div class="contact-icon-wrap">⌥</div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-val">keerthanadora</div>
+        </div>
       </a>
-      <a href="resume.pdf" class="contact-link" target="_blank">
-        <span class="contact-icon">↓</span>
-        <span>Resume PDF</span>
+      <a href="Keerthana_Res_Seln2New.pdf" class="contact-card" target="_blank">
+        <div class="contact-icon-wrap">↓</div>
+        <div>
+          <div class="contact-label">Resume</div>
+          <div class="contact-val">download PDF</div>
+        </div>
       </a>
     </div>
+    <p style="margin-top:20px;font-size:13px;color:var(--muted2);font-family:var(--mono)">
+      📞 +91 9952890994
+    </p>
   </div>
 </section>
 
 <footer>
-  <div>built by your-name · hosted on github pages</div>
+  <div>built by <span>Keerthana B</span> · QA Automation Engineer · Bengaluru · hosted on <span>GitHub Pages</span></div>
 </footer>
 
 </body>
