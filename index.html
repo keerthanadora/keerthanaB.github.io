@@ -43,8 +43,18 @@ nav{position:sticky;top:0;z-index:100;background:rgba(9,9,15,0.85);backdrop-filt
 .nav-logo{font-family:var(--display);font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.01em;display:flex;align-items:center;gap:8px}
 .nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--violet);display:inline-block}
 .nav-links{display:flex;gap:1.8rem;list-style:none}
-.nav-links a{font-size:13px;color:var(--muted);transition:color 0.2s;font-family:var(--mono)}
-.nav-links a:hover{color:var(--text);text-decoration:none}
+.nav-links a{
+  color:#d8d8e4;
+  font-weight:500;
+  padding:8px 12px;
+  border-radius:6px;
+  transition:.25s;
+}
+
+.nav-links a:hover{
+  background:rgba(167,139,250,.12);
+  color:var(--violet);
+}
 .nav-cta{font-size:12px;padding:7px 16px;border:1px solid var(--border2);border-radius:6px;color:var(--text);transition:all 0.2s;font-family:var(--mono)}
 .nav-cta:hover{border-color:var(--violet);color:var(--violet);text-decoration:none}
 
@@ -62,9 +72,16 @@ h3{font-family:var(--display);font-size:17px;font-weight:600;color:var(--text);m
 .hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--violet);background:var(--violet-dim);border:1px solid rgba(167,139,250,0.25);padding:5px 14px;border-radius:20px;margin-bottom:24px}
 .hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--violet);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero-name{font-family:var(--display);font-size:clamp(42px,7vw,72px);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:8px;color:var(--text)}
+.hero-name{font-family:var(--display);font-size:clamp(42px,7vw,72px);text-shadow:0 0 35px rgba(167,139,250,.18);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:8px;color:var(--text)}
 .hero-name span{color:var(--violet)}
 .hero-role{font-family:var(--display);font-size:clamp(16px,2.5vw,22px);font-weight:400;color:var(--muted);margin-bottom:28px;letter-spacing:-0.01em}
+.hero-subrole{
+font-size:14px;
+color:var(--muted);
+margin-top:-12px;
+margin-bottom:28px;
+font-family:var(--mono);
+}
 .hero-bio{max-width:580px;color:var(--muted);font-size:15px;line-height:1.85;margin-bottom:40px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;text-decoration:none;font-family:var(--mono)}
@@ -199,7 +216,64 @@ footer span{color:var(--violet)}
   .edu-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
 }
+/* ── FLOATING BACKGROUND ── */
+
+.floating-bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.floating-bg span{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:rgba(167,139,250,.25);
+  animation:float 18s linear infinite;
+}
+
+.floating-bg span:nth-child(1){
+  left:10%;
+  animation-delay:0s;
+}
+
+.floating-bg span:nth-child(2){
+  left:35%;
+  animation-delay:4s;
+}
+
+.floating-bg span:nth-child(3){
+  left:65%;
+  animation-delay:8s;
+}
+
+.floating-bg span:nth-child(4){
+  left:85%;
+  animation-delay:12s;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(100vh);
+    opacity:0;
+  }
+  20%{
+    opacity:1;
+  }
+  80%{
+    opacity:1;
+  }
+  to{
+    transform:translateY(-100px);
+    opacity:0;
+  }
+}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
 </style>
 </head>
 <body>
@@ -223,9 +297,17 @@ footer span{color:var(--violet)}
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="container">
-    <div class="hero-tag"><span class="hero-tag-dot"></span>open to opportunities</div>
+    <div class="hero-tag">
+  🚀 Open to QA Automation Opportunities
+    </div>
     <h1 class="hero-name">Keerthana <span>B</span></h1>
-    <p class="hero-role">QA Automation Engineer · Software Test Engineer</p>
+    <p class="hero-role">
+    Finding Bugs Before Users Find Them
+    </p>
+    
+    <p class="hero-subrole">
+    QA Automation Engineer · Selenium · API Testing · Java
+    </p>
     <p class="hero-bio">
       I break software before your users do. With hands-on experience in manual testing, Selenium automation, and API testing, I build reliable test suites that catch bugs early and keep releases confident. Passionate about quality, automation, and Agile teams.
     </p>
@@ -707,8 +789,13 @@ footer span{color:var(--violet)}
 </section>
 
 <footer>
-  <div>built by <span>Keerthana B</span> · QA Automation Engineer · Bengaluru · hosted on <span>GitHub Pages</span></div>
+  <div>built by <span>Keerthana B</span> · QA Automation Engineer · hosted on <span>GitHub Pages</span></div>
 </footer>
-
+<div class="floating-bg">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 </body>
 </html>
